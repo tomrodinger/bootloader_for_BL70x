@@ -1,0 +1,2 @@
+/Volumes/Untitled/bootloader_source_debug_on_D0/build_essentials/toolchain_essentials/riscv/Darwin/bin/riscv64-unknown-elf-ar qc libmbedtls.a CMakeFiles/mbedtls.dir/bflb_port/src/bflb_aes.c.obj CMakeFiles/mbedtls.dir/bflb_port/src/bflb_ccm.c.obj CMakeFiles/mbedtls.dir/library/sha256.c.obj CMakeFiles/mbedtls.dir/library/platform_util.c.obj
+/Volumes/Untitled/bootloader_source_debug_on_D0/build_essentials/toolchain_essentials/riscv/Darwin/bin/riscv64-unknown-elf-ranlib libmbedtls.a

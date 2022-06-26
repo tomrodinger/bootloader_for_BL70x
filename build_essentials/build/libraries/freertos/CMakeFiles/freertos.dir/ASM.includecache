@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Volumes/Untitled/bootloader_source_debug_on_D0/build_essentials/components/freertos/portable/gcc/risc-v/bl702/freertos_risc_v_chip_specific_extensions.h
+
+/Volumes/Untitled/bootloader_source_debug_on_D0/build_essentials/components/freertos/portable/gcc/risc-v/bl702/portASM.S
+freertos_risc_v_chip_specific_extensions.h
+/Volumes/Untitled/bootloader_source_debug_on_D0/build_essentials/components/freertos/portable/gcc/risc-v/bl702/freertos_risc_v_chip_specific_extensions.h
+
