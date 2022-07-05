@@ -1,7 +1,7 @@
 *************submodule information*********************
 
 *****************sdk information************************
-
+00c8ef9ef1bb45eff8b7d46991173bf72f8ee10c Initial commit of all files that can build the bootloader on MacOS Tested on M1 Mac running Monterey (12.4)
 *****************gcc information************************
 riscv64-unknown-elf-gcc (SiFive GCC-Metal 10.2.0-2020.12.8) 10.2.0
 Copyright (C) 2020 Free Software Foundation, Inc.

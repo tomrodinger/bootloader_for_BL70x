@@ -1,2 +1,0 @@
-/Volumes/Untitled/bootloader_source_debug_on_D0/build_essentials/toolchain_essentials/riscv/Darwin/bin/riscv64-unknown-elf-ar qc libxz.a CMakeFiles/xz.dir/xz_crc32.c.obj CMakeFiles/xz.dir/xz_dec_lzma2.c.obj CMakeFiles/xz.dir/xz_dec_stream.c.obj CMakeFiles/xz.dir/xz_decompress.c.obj CMakeFiles/xz.dir/xz_port.c.obj
-/Volumes/Untitled/bootloader_source_debug_on_D0/build_essentials/toolchain_essentials/riscv/Darwin/bin/riscv64-unknown-elf-ranlib libxz.a
