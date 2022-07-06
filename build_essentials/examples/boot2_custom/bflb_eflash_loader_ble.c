@@ -54,6 +54,7 @@
 
 static struct bt_conn *ble_bl_conn = NULL;
 static volatile uint8_t is_rcv_msg = 0;
+static struct bt_gatt_exchange_params exchg_mtu;
 
 void bflb_eflash_loader_ble_if_enable_int(void)
 {
@@ -102,8 +103,16 @@ static void ble_cfg_changed(const struct bt_gatt_attr *attr, u16_t vblfue)
     }
 }
 
+static void ble_tx_mtu_size(struct bt_conn *conn, u8_t err,
+                               struct bt_gatt_exchange_params *params)
+{
+
+}
+
 static void bl_connected(struct bt_conn *conn, uint8_t err)
 {
+    int tx_octets = 0x00fb;
+    int tx_time = 0x0848;
     struct bt_le_conn_param param;
 
     param.interval_max=0x28;
@@ -118,6 +127,12 @@ static void bl_connected(struct bt_conn *conn, uint8_t err)
 	} else {
         ble_bl_conn = conn;
         bt_conn_le_param_update(conn, &param);
+
+        if (!bt_le_set_data_len(ble_bl_conn, tx_octets, tx_time)) {
+            exchg_mtu.func = ble_tx_mtu_size;
+            //exchange mtu size after connected.
+            bt_gatt_exchange_mtu(ble_bl_conn, &exchg_mtu);
+        }
 
         if (!g_eflash_loader_readbuf[0])
         {

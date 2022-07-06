@@ -287,6 +287,10 @@ async def ble_process(fw_data, addr):
 
     def notification_handler(sender, data):
         rx_queue.put(data)
+
+    async def clean_queue():
+        if not rx_queue.empty():
+            rx_queue.get()
         
     async def get_response_ble(device):
         timeout = 10
@@ -318,14 +322,14 @@ async def ble_process(fw_data, addr):
 
     async def write_data(device, buf):
         while len(buf) > 0:
-            if len(buf) <= 20:
-                data = int(0).to_bytes(1, "little") + buf[0 : 20]
+            if len(buf) <= 240:
+                data = int(0).to_bytes(1, "little") + buf[0 : 240]
             else:
-                data = int(1).to_bytes(1, "little") + buf[0 : 20]
+                data = int(1).to_bytes(1, "little") + buf[0 : 240]
             
             await device.write_gatt_char(write_handle, data)
             
-            buf = buf[20: ]
+            buf = buf[240: ]
 
     async def program_one_page_ble(device, data):
         data = int(0).to_bytes(4, "little") + data
@@ -333,7 +337,7 @@ async def ble_process(fw_data, addr):
         command = create_payload(BFLB_EFLASH_LOADER_CMD_FLASH_WRITE, data)
 
     #    print_data(command)
-
+        await clean_queue()
         # write the bytes in three shots with a time delay betwoen, otherwise there is a strange bug where bytes get dropped
         await write_data(device, command)
 
@@ -349,7 +353,7 @@ async def ble_process(fw_data, addr):
         command = create_payload(BFLB_EFLASH_LOADER_CMD_FLASH_ERASE, data)
 
     #    print_data(command)
-
+        await clean_queue()
         # write the bytes in three shots with a time delay betwoen, otherwise there is a strange bug where bytes get dropped
         await write_data(device, command)
 
