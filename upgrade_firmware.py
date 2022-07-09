@@ -395,6 +395,7 @@ async def ble_process(fw_data, addr):
                                 read_handle = char
                     if write_handle is not None and read_handle is not None:
                         await client.start_notify(read_handle, notification_handler)
+                        await asyncio.sleep(5)
                         
                         ret = (await erase_flash_ble(client, len(fw_data)))
                         
